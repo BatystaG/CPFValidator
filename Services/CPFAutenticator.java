@@ -15,21 +15,22 @@ public class CPFAutenticator {
         this.personalNumber = personalNumber;
     }
 
-    public boolean verificaSeTodosOsNumerosSaoIguais(){
-        String number = personalNumber.getCpfNumber().toString();
-        for(int i = 0; i<number.length(); i++){
+    public PersonalNumber getPersonalNumber() {
+        return personalNumber;
+    }
 
-        }
+    public void setPersonalNumber(PersonalNumber personalNumber) {
+        this.personalNumber = personalNumber;
     }
 
     public boolean cpfValidate(){
         String number = personalNumber.getCpfNumber().toString();
 
-        if (number.length() != 11){
-            throw new IllegalArgumentException("Número Inválido!") ;
-        } else if ( )
+        if (number.length() != 11 || number.matches("(.)\\1{10}")){
+            throw new IllegalArgumentException("Número Inválido.") ;
+        }
 
-        return false;
+        return true;
     }
 
 

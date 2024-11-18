@@ -1,21 +1,23 @@
 package entities;
 
+import Services.CPFAutenticator;
+
 public class PersonalNumber {
 
-    private Double cpfNumber;
+    private Long cpfNumber;
 
     public PersonalNumber(){
     }
 
-    public PersonalNumber(double cpfNumber){
+    public PersonalNumber(long cpfNumber){
         this.cpfNumber = cpfNumber;
     }
 
-    public Double getCpfNumber() {
+    public Long getCpfNumber() {
         return cpfNumber;
     }
 
-    public void setCpfNumber(Double cpfNumber) {
+    public void setCpfNumber(Long cpfNumber) {
         this.cpfNumber = cpfNumber;
     }
 }
