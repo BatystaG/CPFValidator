@@ -13,21 +13,26 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Digite o número:");
-        long num = sc.nextLong();
+        try {
+            System.out.print("Digite o número do CPF para verificar se é válido: ");
+            String cpf = sc.nextLine();
 
-        PersonalNumber number = new PersonalNumber(num);
-        CPFAutenticator cpfAutenticator = new CPFAutenticator(number);
+            // Remove os caracteres que não são números e converte a string para Long
+            String fmt = cpf.replaceAll("[^\\d]", "");
+            long num = Long.parseLong(fmt);
 
+            CPFAutenticator cpfAutenticator = new CPFAutenticator(new PersonalNumber(num));
 
-
-
-        if (cpfAutenticator.cpfValidate()){
-            System.out.println("CPF valido");
+            if (cpfAutenticator.cpfValidate()) {
+                System.out.println("O CPF digitado é Valido!");
+            }
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println("Número digitado inválido.");
+        }
+        finally {
+            sc.close();
         }
 
-
-
-        sc.close();
     }
 }
