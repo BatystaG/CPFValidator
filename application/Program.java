@@ -19,9 +19,9 @@ public class Program {
             // Remove os caracteres que não são números
             String fmt = cpf.replaceAll("[^\\d]", "");
 
-            CPFAutenticator cpfAutenticator = new CPFAutenticator(fmt);
+            CPFAutenticator cpfAutenticator = new CPFAutenticator();
 
-            if (cpfAutenticator.cpfValidate()) {
+            if (cpfAutenticator.cpfValidate(fmt)) {
                 System.out.println("O CPF digitado é Valido!");
             }
         }
