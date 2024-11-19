@@ -21,9 +21,9 @@ public class Program {
 
             CPFAutenticator cpfAutenticator = new CPFAutenticator();
 
-            if (cpfAutenticator.cpfValidate(fmt)) {
-                System.out.println("O CPF digitado é Valido!");
-            }
+            cpfAutenticator.cpfValidate(fmt);
+            System.out.println("O CPF digitado é Valido!");
+
         }
         catch (IllegalArgumentException e) {
             System.out.println("Número digitado inválido.");
@@ -34,6 +34,8 @@ public class Program {
         finally {
             sc.close();
         }
+
+
 
     }
 }

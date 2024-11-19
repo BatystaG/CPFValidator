@@ -15,9 +15,7 @@ public class CPFAutenticator {
         }
     }
 
-    public boolean cpfValidate(String cpf) throws Exception {
-
-        boolean valid = false;
+    public void cpfValidate(String cpf) throws Exception {
 
         // verifica se a entrada tem 11 digitos e não são iguais
         if (cpf.length() != 11 || cpf.matches("(.)\\1{10}")){
@@ -48,19 +46,8 @@ public class CPFAutenticator {
 
         double resto2 = acumuladorSegundoDigito % 11;
 
-        if (resto2 < 2){
-            if (Integer.parseInt(String.valueOf(segundoDigito)) == 0){
-                valid = true;
-            }else {
-                throw new Exception("CPF Inválido");
-            }
-        }else if (Integer.parseInt(String.valueOf(segundoDigito)) == (11 - resto2)){
-            valid = true;
-        } else {
-            throw new Exception("CPF Inválido");
-        }
+        verificaResto(resto2,segundoDigito);
 
-        return valid;
     }
 
 
