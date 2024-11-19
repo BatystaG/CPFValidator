@@ -1,7 +1,6 @@
 package application;
 
 import Services.CPFAutenticator;
-import entities.PersonalNumber;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -17,11 +16,10 @@ public class Program {
             System.out.print("Digite o número do CPF para verificar se é válido: ");
             String cpf = sc.nextLine();
 
-            // Remove os caracteres que não são números e converte a string para Long
+            // Remove os caracteres que não são números
             String fmt = cpf.replaceAll("[^\\d]", "");
-            long num = Long.parseLong(fmt);
 
-            CPFAutenticator cpfAutenticator = new CPFAutenticator(new PersonalNumber(num));
+            CPFAutenticator cpfAutenticator = new CPFAutenticator(fmt);
 
             if (cpfAutenticator.cpfValidate()) {
                 System.out.println("O CPF digitado é Valido!");
@@ -29,6 +27,9 @@ public class Program {
         }
         catch (IllegalArgumentException e) {
             System.out.println("Número digitado inválido.");
+        }
+        catch (Exception e) {
+            System.out.println("CPF Inválido!");
         }
         finally {
             sc.close();
